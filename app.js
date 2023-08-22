@@ -2,6 +2,12 @@ const express=require('express');
 const app=express();
 const dotenv=require('dotenv').config();
 const PORT= process.env.PORT || 8000
+const bodyparser = require('body-parser')
+var cors = require('cors')
+
+app.use(bodyparser.urlencoded({ extended: false }))
+app.use(bodyparser.json())
+app.use(cors())
 
 require('./dbconnection.js');
 require('./relations.js').modelRelations();
